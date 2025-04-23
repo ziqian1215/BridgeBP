@@ -55,10 +55,10 @@ The `target_index` parameter specifies which parcellation should be used as the 
 
 This is especially useful when mapping high-resolution SC data to a different atlas for comparison or downstream analysis.
 
-For example, to convert to the `Schaefer2018_400Parcels_7Networks_order` atlas:
+For example, to convert to the `Schaefer2018_300Parcels_7Networks_order` atlas:
 
 ```matlab
-target_index = 33;  % Example using 'Schaefer2018_400Parcels_7Networks_order' atlas
+target_index = 33;  % Example using 'Schaefer2018_300Parcels_7Networks_order' atlas
 disp(fprintf('The target atlas is: %s', sbci_parc(target_index).atlas{1}));
 ```
 ## Current Supported Atlases
@@ -67,7 +67,7 @@ BridgeBP supports a wide range of brain parcellations for structural connectivit
 
 Each entry in `sbci_parc` includes:
 
-- `atlas`: name of the parcellation (e.g., `'Schaefer2018_400Parcels_7Networks_order'`)
+- `atlas`: name of the parcellation (e.g., `'Schaefer2018_300Parcels_7Networks_order'`)
 - `labels`, `sorted_idx`, and `names`: arrays containing ROI-specific data for cortical surface mapping
 
 #### Atlas Index Reference
