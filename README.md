@@ -57,7 +57,3 @@ If you use this toolbox in your research, please cite:
 
 ## License
 This project is licensed under the **MIT License** – see the `LICENSE` file for details.
-
-## Contact
-For questions or issues, please open an **Issue** on GitHub or contact:
-**[Ziqian Zhang]** – zziqian092@gmail.com
