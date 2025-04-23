@@ -19,10 +19,10 @@ load('discrete_sc.mat');
 
 % Set and Display the atlas currently in use.
 % atlas name can be found by `sbci_parc.atlas`
-atlas_index = 44; % Example using 'Schaefer2018_300' atlas
-disp(fprintf('the atlas current use is: %s', sbci_parc(atlas_index).atlas{1}));
-target_index = 33; % Example using 'aparc' atlas
-disp(fprintf('the target atlas is: %s', sbci_parc(target_index).atlas{1}));
+atlas_index = 44; % Example using 'aparc' atlas
+disp(fprintf('The atlas current use is: %s', sbci_parc(atlas_index).atlas{1}));
+target_index = 33; % Example using 'Schaefer2018_300' atlas
+disp(fprintf('The target atlas is: %s', sbci_parc(target_index).atlas{1}));
 
 % Define indices for regions to exclude from analysis (non-meaningful brain regions).
 % Specific ROI Names can be found by `sbci_parc.names`
