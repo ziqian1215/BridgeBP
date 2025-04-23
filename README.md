@@ -14,25 +14,20 @@ This toolkit is implemented in MATLAB. Follow these steps for setup:
 
 ## Required Input
 
+
+| File / Variable      | Description                                                                                                   |
+|----------------------|---------------------------------------------------------------------------------------------------------------|
+| **discrete_sc.mat**  | ROI × ROI structural-connectivity matrix produced by the SBCI pipeline.                                       |
+| **sbci_surf**        | MATLAB structure containing the left- and right-hemisphere surface meshes (vertices, faces, normals) on the selected icosphere level, e.g. ico4. |
+
+*Example meshes for testing live in `example_data_new/fsaverage_label/`.*
+
 ## Usage
-### 1. Convert a Connectivity Matrix
+### Convert a Connectivity Matrix
 ```matlab
 bridge_brain_parcellations(discrete_sc, sbci_parc, atlas_index, sbci_mapping, roi_exclusion_index, target_index);
 ```
-
-### 2. Validate Conversion Accuracy
-```matlab
-from evaluation import compute_correlation
-correlation = compute_correlation(original_matrix, converted_matrix)
-print(f"Conversion Correlation: {correlation:.4f}")
-```
-
-### 3. Visualize Connectivity Matrices
-```python
-from visualization import plot_connectivity
-plot_connectivity(original_matrix, title='Original SC Matrix')
-plot_connectivity(converted_matrix, title='Converted SC Matrix')
-```
+<img width="1446" alt="Screenshot 2025-04-23 at 5 34 44 PM" src="https://github.com/user-attachments/assets/421c9f7e-545a-4784-b3eb-5449c2910000" />
 
 ## Supported Atlases
 The toolbox supports a variety of parcellation schemes, including:
@@ -42,12 +37,6 @@ The toolbox supports a variety of parcellation schemes, including:
 - **Schaefer (100-1000 parcels)**
 - **Yeo 7/17 Networks**
 - **Gordon, Glasser (HCP-MMP1), CoCoNest Atlases**
-
-## Applications
-- **Standardizing connectivity analyses across studies**.
-- **Enhancing reproducibility in network neuroscience**.
-- **Pre-processing data for Graph Neural Network (GNN) models**.
-- **Comparing connectivity measures across parcellations**.
 
 ## Citation
 If you use this toolbox in your research, please cite:
