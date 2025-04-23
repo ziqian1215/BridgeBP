@@ -13,14 +13,12 @@ This toolkit is implemented in MATLAB. Follow these steps for setup:
 *A Python version is currently in development and will be released soon.*
 
 ## Required Input
+To convert to a target-atlas discrete structural connectivity matrix, the toolkit requires two inputs:
 
+- `discrete_sc.mat`: ROI × ROI structural connectivity matrix.
+- `sbci_surf`: A MATLAB structure containing the left- and right-hemisphere surface meshes (vertices, faces, normals) on the selected icosphere level (e.g., ico4).
 
-| File / Variable      | Description                                                                                                   |
-|----------------------|---------------------------------------------------------------------------------------------------------------|
-| **discrete_sc.mat**  | ROI × ROI structural-connectivity matrix produced by the SBCI pipeline.                                       |
-| **sbci_surf**        | MATLAB structure containing the left- and right-hemisphere surface meshes (vertices, faces, normals) on the selected icosphere level, e.g. ico4. |
-
-*Example meshes for testing live in `example_data_new/fsaverage_label/`.*
+Example mesh files are available in `example_data_new/fsaverage_label/`.
 
 ## Usage
 ### Convert a Connectivity Matrix
@@ -29,14 +27,35 @@ bridge_brain_parcellations(discrete_sc, sbci_parc, atlas_index, sbci_mapping, ro
 ```
 <img width="1446" alt="Screenshot 2025-04-23 at 5 34 44 PM" src="https://github.com/user-attachments/assets/421c9f7e-545a-4784-b3eb-5449c2910000" />
 
-## Supported Atlases
-The toolbox supports a variety of parcellation schemes, including:
-- **Desikan-Killiany (68 regions)**
-- **Destrieux (148 regions)**
-- **Brainnetome (210 regions)**
-- **Schaefer (100-1000 parcels)**
-- **Yeo 7/17 Networks**
-- **Gordon, Glasser (HCP-MMP1), CoCoNest Atlases**
+## Current Supported Atlases
+
+BridgeBP supports a wide range of brain parcellations for structural connectivity analysis. Each atlas is accessible via the `sbci_parc` array and can be selected using the `atlas_index` parameter.
+
+Each entry in `sbci_parc` includes:
+
+- `atlas`: name of the parcellation (e.g., `'Schaefer2018_400Parcels_7Networks_order'`)
+- `labels`, `sorted_idx`, and `names`: arrays containing ROI-specific data for cortical surface mapping
+
+You can list all available atlas names with:
+
+```matlab
+{sbci_parc.atlas}'
+```
+### Atlas Index Reference
+
+| Index Range | Atlas Name / Family |
+|-------------|---------------------|
+| 1           | BN_Atla|
+| 2–23       | CoCoNest family (e.g., `CoCoNest_375`, `CoCoNest_500`) |
+| 24          | Gordon |
+| 25          | HCPMMP1 |
+| 26–29       | PALS_B12 family (`Brodmann`, `Lobes`, `Orbitofrontal`, `Visuotopic`) |
+| 30–39       | Schaefer2018 (from 100 to 1000 parcels) |
+| 40–41       | Yeo2011 (`17Networks`, `7Networks`) |
+| 42–44       | Desikan & Desikan-Killiany (`aparc.a2005s`, `aparc.a2009s`, `aparc`) |
+| 45          | oasis.chubs |
+| ...   | ...   
+
 
 ## Citation
 If you use this toolbox in your research, please cite:
