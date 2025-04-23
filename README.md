@@ -27,6 +27,28 @@ bridge_brain_parcellations(discrete_sc, sbci_parc, atlas_index, sbci_mapping, ro
 ```
 <img width="1446" alt="Screenshot 2025-04-23 at 5 34 44 PM" src="https://github.com/user-attachments/assets/421c9f7e-545a-4784-b3eb-5449c2910000" />
 
+## Key Parameters
+### `atlas_index` Parameter
+
+The `atlas_index` parameter specifies which brain parcellation to use from the `sbci_parc` array. This index determines how the high-resolution connectivity matrix will be mapped to a target atlas.
+
+Each entry in `sbci_parc` corresponds to a specific atlas and includes its name, cortical ROI labels, and surface mapping information.
+
+To select an atlas, assign its index directly. For example:
+
+```matlab
+atlas_index = 44;  % Example using 'aparc' atlas
+disp(fprintf('The atlas currently in use is: %s', sbci_parc(atlas_index).atlas{1}));
+```
+### `roi_exclusion_index` Parameter
+
+The `roi_exclusion_index` parameter allows you to exclude specific regions of interest (ROIs) from analysis and visualization. This is useful for removing non-informative regions such as background or missing labels.
+
+Each value in `roi_exclusion_index` corresponds to a region index in the selected atlas. For example, to exclude regions labeled `'LH_missing'` and `'RH_missing'`:
+
+```matlab
+roi_exclusion_index = [1, 36];  % Index 1: 'LH_missing', Index 36: 'RH_missing'
+
 ## Current Supported Atlases
 
 BridgeBP supports a wide range of brain parcellations for structural connectivity analysis. Each atlas is accessible via the `sbci_parc` array and can be selected using the `atlas_index` parameter.
@@ -36,17 +58,12 @@ Each entry in `sbci_parc` includes:
 - `atlas`: name of the parcellation (e.g., `'Schaefer2018_400Parcels_7Networks_order'`)
 - `labels`, `sorted_idx`, and `names`: arrays containing ROI-specific data for cortical surface mapping
 
-You can list all available atlas names with:
-
-```matlab
-{sbci_parc.atlas}'
-```
-### Atlas Index Reference
+#### Atlas Index Reference
 
 | Index Range | Atlas Name / Family |
 |-------------|---------------------|
 | 1           | BN_Atla|
-| 2–23       | CoCoNest family (e.g., `CoCoNest_375`, `CoCoNest_500`) |
+| 2–23        | CoCoNest family (e.g., `CoCoNest_375`, `CoCoNest_500`) |
 | 24          | Gordon |
 | 25          | HCPMMP1 |
 | 26–29       | PALS_B12 family (`Brodmann`, `Lobes`, `Orbitofrontal`, `Visuotopic`) |
