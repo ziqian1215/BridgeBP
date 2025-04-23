@@ -6,15 +6,13 @@ close all;
 % This is a option in SBCI Pipeline.
 icoLevel = 'ico4';
 % Add required directories to the path for the initial setup.
-addpath('./plotting');
-addpath('./example_data_new/fsaverage_label/');
-addpath('./example_data/SBCI_Individual_Subject_Outcome/');
-addpath('./example_data');
-addpath('./analysis');
+addpath('./plot');
+addpath('./example_data/fsaverage_label/');
+addpath('./transformation');
 
 % Load average data and surface from the SBCI pipeline.
-[sbci_parc, sbci_mapping, ~] = load_sbci_data('example_data_new/fsaverage_label', icoLevel);
-sbci_surf = load_sbci_surface('example_data_new/fsaverage_label');
+[sbci_parc, sbci_mapping, ~] = load_sbci_data('example_data/fsaverage_label', icoLevel);
+sbci_surf = load_sbci_surface('example_data/fsaverage_label');
 
 % Load Discrete SC matrices.
 load('discrete_sc.mat');
