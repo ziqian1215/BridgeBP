@@ -48,7 +48,19 @@ Each value in `roi_exclusion_index` corresponds to a region index in the selecte
 
 ```matlab
 roi_exclusion_index = [1, 36];  % Index 1: 'LH_missing', Index 36: 'RH_missing'
+```
+### `target_index` Parameter
 
+The `target_index` parameter specifies which parcellation should be used as the **target atlas** when transforming the structural connectivity matrix. It determines the resolution and structure of the output matrix.
+
+This is especially useful when mapping high-resolution SC data to a different atlas for comparison or downstream analysis.
+
+For example, to convert to the `Schaefer2018_400Parcels_7Networks_order` atlas:
+
+```matlab
+target_index = 33;  % Example using 'Schaefer2018_400Parcels_7Networks_order' atlas
+disp(fprintf('The target atlas is: %s', sbci_parc(target_index).atlas{1}));
+```
 ## Current Supported Atlases
 
 BridgeBP supports a wide range of brain parcellations for structural connectivity analysis. Each atlas is accessible via the `sbci_parc` array and can be selected using the `atlas_index` parameter.
